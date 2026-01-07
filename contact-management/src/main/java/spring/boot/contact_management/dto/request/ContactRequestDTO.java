@@ -9,9 +9,6 @@ public record ContactRequestDTO(
         String phone,
 
         @Email
-        String email,
-
-        @NotNull
-        Long clientID
+        String email
 ) {
 }
