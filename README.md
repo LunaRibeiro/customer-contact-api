@@ -35,6 +35,26 @@ Essa abordagem facilita:
 
 ---
 
+## 🛣️ Endpoints da API
+
+| Método | Endpoint | Descrição |
+| :--- | :--- | :--- |
+| **POST** | `/clientes` | Cadastro de um novo Cliente |
+| **POST** | `/contatos` | Cadastro de Contato associado a um cliente existente |
+| **GET** | `/clientes` | Listagem de todos os clientes com seus respectivos contatos |
+| **GET** | `/clientes/{id}/contatos` | Listagem de contatos de um cliente específico |
+
+## 🛠️ Configuração Local
+
+1. Clone o repositório.
+2. Certifique-se de ter o **PostgreSQL** instalado e rodando localmente.
+3. Configure as credenciais do banco no arquivo `src/main/resources/application.properties`:
+   ```properties
+   spring.datasource.url=jdbc:postgresql://localhost:5432/nome_do_seu_banco
+   spring.datasource.username=seu_usuario
+   spring.datasource.password=sua_senha
+   spring.jpa.hibernate.ddl-auto=update
+
 ## 🗂️ Estrutura de Pastas
 
 ```text
