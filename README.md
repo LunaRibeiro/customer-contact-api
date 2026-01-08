@@ -39,10 +39,10 @@ Essa abordagem facilita:
 
 | Método | Endpoint | Descrição |
 | :--- | :--- | :--- |
-| **POST** | `/clientes` | Cadastro de um novo Cliente |
-| **POST** | `/contatos` | Cadastro de Contato associado a um cliente existente |
-| **GET** | `/clientes` | Listagem de todos os clientes com seus respectivos contatos |
-| **GET** | `/clientes/{id}/contatos` | Listagem de contatos de um cliente específico |
+| **POST** | `/client` | Cadastro de um novo Cliente |
+| **POST** | `/contact` | Cadastro de Contato associado a um cliente existente |
+| **GET** | `/client` | Listagem de todos os clientes com seus respectivos contatos |
+| **GET** | `/client/{id}/contact` | Listagem de contatos de um cliente específico |
 
 ## 🛠️ Configuração Local
 
@@ -58,20 +58,35 @@ Essa abordagem facilita:
 ## 🗂️ Estrutura de Pastas
 
 ```text
-src/main/java/com/seuusuario/clientesapi
+src/main/java/com/contact_management
 │
+├── commom/specification
+│   ├── BaseSpecification.java
+|   ├── SpecificationHelper.java
+│   └── SearchCriteria.java
+|
+|
 ├── controller
 │   ├── ClientController.java
 │   └── ContactController.java
 │
 ├── dto
-│   ├── client
-│   │   ├── ClientRequestDTO.java
-│   │   └── ClientResponseDTO.java
-│   └── contact
-│       ├── ContactRequestDTO.java
-│       └── ContactResponseDTO.java
+│   ├── filter
+│   │   ├── ClientFilterDTO.java
+│   │   └── ContactFilterDTO.java
+|   ├── response
+│   │   ├── ClientResponseDTO.java
+│   │   └── ContactResponseDTO.java
+│   └── request
+│       ├── ClientRequestDTO.java
+│       └── ContactRequestDTO.java
 │
+├── mapper
+│   ├── ClientCreateMapper.java
+|   ├── ClientDTOMapper.java
+|   ├── ContactCreateMapper.java
+│   └── ContactDTOMapper.java
+|
 ├── domain
 │   ├── Client.java
 │   └── Contact.java
@@ -84,8 +99,8 @@ src/main/java/com/seuusuario/clientesapi
 │   ├── ClientService.java
 │   └── ContactService.java
 │
-├── exception
-│   ├── ResourceNotFoundException.java
-│   └── GlobalExceptionHandler.java
+├── specification
+│   ├── ClientSpecification.java
+│   └── ContactSpecification.java
 │
-└── ClientesApiApplication.java
+└── ContactManagementApplication.java
