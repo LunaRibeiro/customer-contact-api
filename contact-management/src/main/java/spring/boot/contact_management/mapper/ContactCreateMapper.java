@@ -10,7 +10,6 @@ import spring.boot.contact_management.dto.request.ContactRequestDTO;
 public class ContactCreateMapper {
 
     public Contact convert(ContactRequestDTO contactRequestDTO) {
-        if(contactRequestDTO == null) return null;
 
         Contact contact = new Contact();
         contact.setPhone(contactRequestDTO.phone());
