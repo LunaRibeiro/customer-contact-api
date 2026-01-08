@@ -16,8 +16,6 @@ import spring.boot.contact_management.mapper.ClientDTOMapper;
 import spring.boot.contact_management.repository.ClientRepository;
 import spring.boot.contact_management.specification.ClientSpecification;
 
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
 public class ClientService {
@@ -34,16 +32,8 @@ public class ClientService {
         return clientCreateMapper.convert(clientRequestDTO);
     }
 
-    public ClientResponseDTO generateClientResponseDTO(Client client) {
-        return clientDTOMapper.convert(client);
-    }
-
     public Page<ClientResponseDTO> generateClientResponseDTOPage(Page<Client> clientPage) {
         return clientPage.map(clientDTOMapper::convert);
-    }
-
-    public List<ClientResponseDTO> generateClientResponseDTOList(List<Client> clientList) {
-        return clientList.stream().map(clientDTOMapper::convert).toList();
     }
 
     private Specification<Client> generateSpecification(ClientFilterDTO clientFilterDTO) {

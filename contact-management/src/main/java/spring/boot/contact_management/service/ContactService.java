@@ -32,10 +32,6 @@ public class ContactService {
         return contactCreateMapper.convert(contactRequestDTO);
     }
 
-    public ContactResponseDTO generateContactResponseDTO(Contact contact) {
-       return contactDTOMapper.convert(contact);
-    }
-
     public List<ContactResponseDTO> generateContactResponseDTOList(List<Contact> contactList) {
         return contactList.stream().map(contactDTOMapper::convert).toList();
     }
@@ -62,6 +58,7 @@ public class ContactService {
     }
 
     public List<ContactResponseDTO> listByClient(Long clientId, ContactFilterDTO contactFilterDTO) {
+
         Specification<Contact> specification = Specification
                 .where(byClient(clientId))
                 .and(generateSpecification(contactFilterDTO));
@@ -70,5 +67,6 @@ public class ContactService {
 
         return generateContactResponseDTOList(contacts);
     }
+
 
 }
