@@ -48,23 +48,17 @@ public class ClientService {
 
     private Specification<Client> generateSpecification(ClientFilterDTO clientFilterDTO) {
         SearchCriteria<String> firstNameCriteria = SpecificationHelper.generateInnerLikeCriteria("firstName", clientFilterDTO.firstName());
+        SearchCriteria<Long> clientIdCriteria = SpecificationHelper.generateEqualsCriteria("client.id", clientFilterDTO.clientId());
 
         Specification<Client> firstNameSpecification = new ClientSpecification(firstNameCriteria);
+        Specification<Client> clientIdSpecification = new ClientSpecification(clientIdCriteria);
 
-        return Specification.where(firstNameSpecification);
+        return Specification.where(firstNameSpecification)
+                .and(clientIdSpecification);
     }
 
     public Page<Client> list(Pageable pageable, ClientFilterDTO clientFilterDTO) {
         Specification<Client> specification = generateSpecification(clientFilterDTO);
         return clientRepository.findAll(specification, pageable);
     }
-
-
-//    public List<ContatoDTO> findContatosByClienteId(Long id) {
-//        Cliente cliente = clienteRepository.findById(id)
-//                .orElseThrow(() -> new ResourceNotFoundException("Cliente não encontrado"));
-//
-//        return contatoMapper.toDtoList(cliente.getContatos()); // Uso do Mapper aqui
-//    }
-
 }
