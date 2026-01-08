@@ -1,6 +1,7 @@
 package spring.boot.contact_management.dto.filter;
 
 public record ClientFilterDTO(
-        String firstName
+        String firstName,
+        Long clientId
 ) {
 }
